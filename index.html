@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple search</title>
+  <script src="./app.js" type="module"></script>
+  <link rel="stylesheet" href="./style.css" />
+  <svg style="display: none;">
+    <defs>
+      <path id="framePath"
+        d="M0 4 4 0H60L64 4V60L60 64H4L0 60V4M3 1.5 61 1.5 62.5 3 62.5 61 61 62.5 3 62.5 1.5 61 1.5 3 3 1.5"></path>
+      <path id="framePathArrows" d="M1 1 0 2V0H2L1 1M63 1 62 0H64V2L63 1M63 63 64 62V64H62L63 63M1 63 2 64H0V62L1 63" />
+    </defs>
+  </svg>
+</head>
+
+<body>
+  <header>
+    <h1>Zelda API Explorer</h1>
+  </header>
+  <main>
+    <form id="searchForm">
+      <input id="searchInput" placeholder="search" />
+      <button type="submit">Search</button>
+      <select id="categoryFilter">
+        <option selected>All</option>
+        <option>monsters</option>
+        <option>equipment</option>
+        <option>materials</option>
+        <option>creatures</option>
+        <option>treasure</option>
+      </select>
+    </form>
+    <div id="content">
+      <div id="resultsLoading">Loading...</div>
+      <div id="searchResults"></div>
+    </div>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

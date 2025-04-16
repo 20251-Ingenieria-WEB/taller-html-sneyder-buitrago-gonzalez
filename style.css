@@ -1,0 +1,171 @@
+body {
+  --lines-color: #1b4661;
+  background-color: #171920;
+  /* background-size: 20px 20px; */
+  /* background-image: repeating-linear-gradient(to right, var(--lines-color), var(--lines-color) 6px, #171920 1px, #171920); */
+  color: aliceblue;
+  padding: 1rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+#searchForm {
+  display: flex;
+  justify-content: center;
+}
+
+#resultsLoading {
+  display: none;
+}
+
+#searchResults {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#categoryFilter {}
+
+.game-card {
+  border: 1px red solid;
+  text-align: center;
+  flex-grow: 1;
+  width: 18rem;
+  height: 24rem;
+
+  p {
+    position: absolute;
+    margin: 1rem;
+    height: 60%;
+    overflow-y: scroll;
+  }
+}
+
+.entry {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  /* border: 4px solid #507078; */
+
+  color: #05caff;
+  text-shadow: 0px 0px 4px #00b0ff;
+
+  p {
+    display: none;
+  }
+}
+
+.name-cover {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* border: 4px solid #284b60; */
+
+
+  img {
+    width: 95%;
+    height: 95%;
+    border-radius: .5rem;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: filter cubic-bezier(0.785, 0.135, 0.15, 0.86) 200ms;
+  }
+}
+
+.info {
+  box-sizing: border-box;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+
+  background: linear-gradient(transparent 50%, rgb(0, 0, 0, .2) 80%);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: all ease-out 300ms;
+
+  overflow: hidden;
+}
+
+.name {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all ease-out 300ms;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.entry:hover {
+  cursor: pointer;
+
+  .info {
+    filter: saturate(200%);
+    background-position: bottom;
+  }
+
+  .name-cover img {
+    filter: brightness(100%);
+  }
+
+  .name {
+    opacity: 1;
+    transform: none;
+  }
+
+  .entry-frame-arrows {
+    display: block;
+    animation: 750ms ease-in-out infinite alternate scale-arrows;
+  }
+}
+
+.entry-frame,
+.entry-frame-arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16rem;
+  stroke: aquamarine;
+
+}
+
+.entry-frame {
+  fill: transparent;
+  stroke-width: .6px;
+  filter: drop-shadow(0 0 2px aquamarine);
+}
+
+.entry-frame-arrows {
+
+  display: none;
+  animation: none;
+  fill: aquamarine;
+  filter: drop-shadow(0 0 4px aquamarine);
+
+}
+
+@keyframes scale-arrows {
+  from {
+    scale: 1.02;
+    stroke-width: 2px;
+  }
+
+  to {
+    scale: 1.08;
+    stroke-width: 3.0px;
+  }
+}
