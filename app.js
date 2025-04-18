@@ -27,7 +27,7 @@ const searchInput = document.getElementById("searchInput")
 const searchForm = document.getElementById("searchForm")
 const searchResults = document.getElementById("searchResults")
 const resultsLoading = document.getElementById("resultsLoading")
-const categoryFilter = document.getElementById("categoryFilter")
+const categoryFilters = document.getElementById("categoryFilters")
 
 const search = async (entryName) => {
   const entriesFound = entryNames.filter((item) => {

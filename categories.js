@@ -40,12 +40,11 @@ export const createEntryEl = (entry) => {
       </div>
       <svg viewBox="0 0 64 64" class="entry-frame">
         <use href="#framePath"/>
+        <use href="#framePathCorners" />
       </svg>
       <svg viewBox="0 0 64 64" class="entry-frame-arrows">
-      <use href="#framePathArrows"/>
+        <use href="#framePathArrows"/>
       </svg>
-      <p class="description">${entry.description}</p>
-      ${dropsEl}
     </div>`
   return el
 }

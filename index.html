@@ -8,7 +8,9 @@
   <svg style="display: none;">
     <defs>
       <path id="framePath"
-        d="M0 4 4 0H60L64 4V60L60 64H4L0 60V4M3 1.5 61 1.5 62.5 3 62.5 61 61 62.5 3 62.5 1.5 61 1.5 3 3 1.5"></path>
+        d="M0 4 4 0H60L64 4V60L60 64H4L0 60V4M3 1.5 61 1.5 62.5 3 62.5 61 61 62.5 3 62.5 1.5 61 1.5 3 3 1.5" />
+      <path id="framePathCorners"
+        d="M 0 3 L 0 0 L 3 0 L 1.5 1.5 L 1.5 0.2 L 0.2 1.5 L 1.5 1.5 L 0 3 M 61 0 L 64 0 L 64 3 L 62.5 1.5 L 63.8 1.5 L 62.5 0.2 L 62.5 1.5 L 61 0 M 64 61 L 64 64 L 61 64 L 62.5 62.5 L 62.5 63.8 L 63.8 62.5 L 62.5 62.5 L 64 61 M 3 64 L 0 64 L 0 61 L 1.5 62.5 L 0.2 62.5 L 1.5 63.8 L 1.5 62.5 L 3 64" />
       <path id="framePathArrows" d="M1 1 0 2V0H2L1 1M63 1 62 0H64V2L63 1M63 63 64 62V64H62L63 63M1 63 2 64H0V62L1 63" />
     </defs>
   </svg>
@@ -16,20 +18,33 @@
 
 <body>
   <header>
-    <h1>Zelda API Explorer</h1>
+    <h1>Hyrule Compendium</h1>
   </header>
   <main>
     <form id="searchForm">
+      <div id="categoryFilters">
+        <label for="monstersCheckbox">
+          <input id="monstersCheckbox" type="checkbox" value="monsters" />
+          <img src="./resources/skull.svg" class="categoryIcon" \>
+        </label>
+        <label for="equipmentCheckbox">
+          <input id="equipmentCheckbox" type="checkbox" value="equipment" />
+          <img src="./resources/sword.svg" class="categoryIcon" \>
+        </label>
+        <label for="materialsCheckbox">
+          <input id="materialsCheckbox" type="checkbox" value="materials" />
+          <img src="./resources/apple.svg" class="categoryIcon" \>
+        </label>
+        <label for="creaturesCheckbox">
+          <input id="creaturesCheckbox" type="checkbox" value="creatures" />
+          <img src="./resources/horse.svg" class="categoryIcon" \>
+        </label>
+        <label for="treasureCheckbox">
+          <input id="treasureCheckbox" type="checkbox" value="treasure" />
+          <img src="./resources/chest.svg" class="categoryIcon" \>
+        </label>
+      </div>
       <input id="searchInput" placeholder="search" />
-      <button type="submit">Search</button>
-      <select id="categoryFilter">
-        <option selected>All</option>
-        <option>monsters</option>
-        <option>equipment</option>
-        <option>materials</option>
-        <option>creatures</option>
-        <option>treasure</option>
-      </select>
     </form>
     <div id="content">
       <div id="resultsLoading">Loading...</div>
