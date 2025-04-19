@@ -1,4 +1,4 @@
-/** @import {Creature, Equipment, Material, Monster, Treasure} from "./schemas.d.ts" */
+/** @import {Creature, Equipment, Material, Monster, Treasure} from "./schemas.ts" */
 
 export const CATEGORIES = [
   "monsters",
@@ -30,7 +30,7 @@ export const createEntryEl = (entry) => {
 
   // HTML
   const el =
-    `<div class=${"entry " + entry.category}>
+    `<div tabindex="0" class=${"entry " + entry.category}>
       <div class="name-cover">
         <img src="${entry.image}"/>
         <div class="info">
