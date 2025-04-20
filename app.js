@@ -1,7 +1,6 @@
 /** @import {Creature, Equipment, Material, Monster, Treasure} from "./schemas.ts" */
 import { createEntryEl } from "./categories.js"
 
-const ZELDA_API = "https://zelda.fanapis.com/api"
 const COMPENDIUM_API = "https://botw-compendium.herokuapp.com/api/v3/compendium"
 
 /** @type string[] */
@@ -28,7 +27,7 @@ const debounce = (fn, ms = 300) => {
 const searchInput = document.getElementById("searchInput")
 const searchForm = document.getElementById("searchForm")
 const contentDiv = document.getElementById("content")
-const resultsLoading = document.getElementById("resultsLoading")
+const info = document.getElementById("info")
 const categoryFilters = document.getElementById("categoryFilters").getElementsByTagName("input")
 
 const closeDetailedInfoBtn = document.getElementById("closeDetailedInfo")
@@ -44,8 +43,6 @@ const toggleDetails = async (entryName) => {
 
   searchForm.classList.toggle("hidden")
   contentDiv.classList.toggle("hidden")
-  // contentDiv.classList.toggle("hide-overflow")
-  // searchForm.classList.toggle("hide-overflow")
   closeDetailedInfoBtn.classList.toggle("hidden")
   detailedInfoDiv.classList.toggle("detailed-info")
 
@@ -79,12 +76,20 @@ const getEntry = async (entryName) => {
 let entriesFound = []
 const search = (entryName) => {
 
+  contentDiv.innerHTML = ""
+  if (entryName.length < 3) {
+    info.innerHTML = "Type at least 3 characteres"
+    info.style.display = "block"
+    return
+  }
+
   entriesFound = entryNames.filter((item) => {
     return item.toLowerCase().includes(entryName.toLowerCase())
   })
 
   if (entriesFound.length === 0) {
-    contentDiv.innerHTML = "No entries found"
+    info.innerHTML = "No entries found"
+    info.style.display = "block"
     return
   }
 
@@ -101,7 +106,7 @@ const filterAndShow = async () => {
   page.className = "search-results-page"
   contentDiv.appendChild(page)
 
-  resultsLoading.style.display = "block"
+  info.style.display = "block"
   let moreThanOneEntry = false;
   const entriesAdded = entriesFound
     .map(async entry => {
@@ -112,7 +117,7 @@ const filterAndShow = async () => {
       }
 
       moreThanOneEntry = true
-      resultsLoading.style.display = "none"
+      info.style.display = "none"
       page.innerHTML += createEntryEl(entryData)
     });
 
@@ -127,7 +132,7 @@ const filterAndShow = async () => {
     })
 
   } else {
-    resultsLoading.innerText = "No entries found"
+    info.innerText = "No entries found"
   }
 }
 
@@ -143,11 +148,6 @@ searchForm.onsubmit = (e) => {
 }
 
 searchInput.oninput = debounce((e) => {
-  if (e.target.value.length < 3) {
-    contentDiv.innerHTML = ""
-    return
-  }
-
   search(e.target.value)
 })
 

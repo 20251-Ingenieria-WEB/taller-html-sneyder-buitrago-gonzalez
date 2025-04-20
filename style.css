@@ -97,8 +97,9 @@ section {
 
 }
 
-#resultsLoading {
-  display: none;
+#info {
+  width: 100%;
+  text-align: center;
 }
 
 .main-content {
@@ -323,21 +324,6 @@ button#closeDetailedInfo:hover {
   max-height: 50vh;
   overflow-y: clip;
   transition: none !important;
-}
-
-.game-card {
-  border: 1px red solid;
-  text-align: center;
-  flex-grow: 1;
-  width: 18rem;
-  height: 24rem;
-
-  p {
-    position: absolute;
-    margin: 1rem;
-    height: 60%;
-    overflow-y: scroll;
-  }
 }
 
 .entry {
