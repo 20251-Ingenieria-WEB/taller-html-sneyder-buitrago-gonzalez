@@ -26,8 +26,8 @@ const debounce = (fn, ms = 300) => {
 // @ts-ignore
 const searchInput = document.getElementById("searchInput")
 const searchForm = document.getElementById("searchForm")
+const searchInfo = document.getElementById("searchInfo")
 const contentDiv = document.getElementById("content")
-const info = document.getElementById("info")
 const categoryFilters = document.getElementById("categoryFilters").getElementsByTagName("input")
 
 const closeDetailedInfoBtn = document.getElementById("closeDetailedInfo")
@@ -78,8 +78,8 @@ const search = (entryName) => {
 
   contentDiv.innerHTML = ""
   if (entryName.length < 3) {
-    info.innerHTML = "Type at least 3 characteres"
-    info.style.display = "block"
+    searchInfo.innerText = "Type at least 3 characteres"
+    searchInfo.style.display = "block"
     return
   }
 
@@ -87,26 +87,21 @@ const search = (entryName) => {
     return item.toLowerCase().includes(entryName.toLowerCase())
   })
 
-  if (entriesFound.length === 0) {
-    info.innerHTML = "No entries found"
-    info.style.display = "block"
-    return
-  }
-
-  filterAndShow()
+  filterCategoriesAndShow()
 }
 
-const filterAndShow = async () => {
+const filterCategoriesAndShow = async () => {
   const categoriesShown = Object.values(categoryFilters).reduce((prev,/**HTMLInputElement*/el) => {
     return { ...prev, [el.value]: el.checked }
   }, {})
 
   contentDiv.innerHTML = ""
+  searchInfo.style.display = "block"
+  searchInfo.innerText = "Loading..."
   const page = document.createElement("div")
   page.className = "search-results-page"
   contentDiv.appendChild(page)
 
-  info.style.display = "block"
   let moreThanOneEntry = false;
   const entriesAdded = entriesFound
     .map(async entry => {
@@ -117,7 +112,7 @@ const filterAndShow = async () => {
       }
 
       moreThanOneEntry = true
-      info.style.display = "none"
+      searchInfo.style.display = "none"
       page.innerHTML += createEntryEl(entryData)
     });
 
@@ -132,7 +127,8 @@ const filterAndShow = async () => {
     })
 
   } else {
-    info.innerText = "No entries found"
+    searchInfo.innerHTML = "No entries found"
+    searchInfo.style.display = "block"
   }
 }
 
@@ -152,7 +148,7 @@ searchInput.oninput = debounce((e) => {
 })
 
 Object.values(categoryFilters).forEach((el) => {
-  el.onchange = () => filterAndShow()
+  el.onchange = () => filterCategoriesAndShow()
 })
 
 closeDetailedInfoBtn.onclick = (e) => {

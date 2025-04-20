@@ -1,0 +1,6 @@
+.hidden {
+  opacity: 0;
+  max-height: 50vh;
+  overflow-y: clip;
+  transition: none !important;
+}

@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "FOT-Rodin Pro DB";
+  src: url(../resources/fot-rodin-pro-db.otf);
+}
+
+:root {
+  --primary-color-brighter: hsl(from var(--primary-color) h calc(s * 1.6) calc(l * 1.1));
+  --primary-color: #88d2fa;
+  --primary-color-darker: #0060ff;
+  --secondary-color: #6c5f32;
+  --background-color: #171920;
+  --lines-color: #002040;
+
+  --soft-overshoot: linear(0, 0.402 7.4%, 0.711 15.3%, 0.929 23.7%, 1.008 28.2%, 1.067 33%, 1.099 36.9%, 1.12 41%, 1.13 45.4%, 1.13 50.1%, 1.111 58.5%, 1.019 83.2%, 1.004 91.3%, 1);
+}
+
+body {
+  font-family: "FOT-Rodin Pro DB";
+
+  background-color: var(--background-color);
+  background-size: 1.6em 100%;
+  background-image: repeating-linear-gradient(to right, var(--lines-color) 0, transparent 10%, transparent 90%, var(--lines-color));
+  color: var(--primary-color);
+  padding: 4vw 1rem 6rem 1rem;
+}
+
+h1 {
+  position: fixed;
+  z-index: 6;
+  left: 50%;
+  top: 0;
+  margin: 0;
+  font-size: 3vw;
+
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 4px var(--primary-color-darker));
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 1rem;
+  text-wrap: nowrap;
+}
+
+section {
+  text-align: center;
+  width: 100%;
+}
+
+.frameart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  img:nth-child(1) {
+    top: 0;
+  }
+
+  img:nth-child(2) {
+    bottom: 0;
+  }
+}

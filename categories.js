@@ -33,7 +33,7 @@ export const createEntryEl = (entry) => {
     `<div id="${entry.id}" name="${entry.name}" tabindex="0" class=${"entry " + entry.category}>
       <div class="name-cover">
         <img src="${entry.image}"/>
-        <div class="info">
+        <div class="entry-info">
           <h2 class="id">${entry.id.toString().padStart(3, '0')}</h2>
           <span class="name">${entry.name}</span>
         </div>

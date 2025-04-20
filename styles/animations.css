@@ -1,0 +1,11 @@
+@keyframes scale-arrows {
+  from {
+    scale: .99;
+    stroke-width: 2.6px;
+  }
+
+  to {
+    scale: 1.06;
+    stroke-width: 3.6px;
+  }
+}

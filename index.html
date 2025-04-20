@@ -5,7 +5,12 @@
   <title>Hyrule Compendium</title>
   <script src="./app.js" type="module"></script>
   <link rel="stylesheet" href="./modern-normalize.css" />
-  <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/animations.css" />
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/detailed-info.css" />
+    <link rel="stylesheet" href="./styles/main-content.css" />
+    <link rel="stylesheet" href="./styles/responsive.css" />
+    <link rel="stylesheet" href="./styles/util.css" />
   <svg style="display: none;">
     <defs>
       <path id="framePath"
@@ -29,8 +34,8 @@
   <header>
     <h1>Hyrule Compendium</h1>
     <div class="frameart">
-      <img src="./resources/frameart_1.png"/>
-      <img src="./resources/frameart_2.png"/>
+      <img src="./resources/frameart_up.png"/>
+      <img src="./resources/frameart_down.png"/>
       <button id="closeDetailedInfo" class="hidden">
         <svg viewBox="0 0 1 1">
           <path d="M 0 0 L 1 1 M 0 1 L 1 0"/>
@@ -70,12 +75,12 @@
     <div id="content" class="main-content">
       <div class="search-results-page"></div>
     </div>
-    <div id="info">Loading...</div>
+    <div id="searchInfo"></div>
     <div id="detailedInfo" class="detailed-info-hidden">
       <div class="entry detailed-entry">
         <div class="name-cover">
           <img id="detailedEntryImg"/>
-          <div class="info-outside">
+          <div class="entry-info-outside">
             <h2 id="detaledEntryId" class="id"></h2>
             <span id="detailedEntryName" class="name"></span>
           </div>
@@ -90,7 +95,7 @@
       </div>
       <section class="description">
         <div class="subtitle">
-          <img src="./resources/circles0.svg" />
+          <img src="./resources/circles_left.svg" />
           <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
             <use href="#line"/>
           </svg>
@@ -98,13 +103,13 @@
           <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
             <use href="#line"/>
           </svg>
-          <img src="./resources/circles1.svg" />
+          <img src="./resources/circles_right.svg" />
         </div>
         <p id="descriptionText"></p>
       </section>
       <section class="locations">
         <div class="subtitle">
-          <img src="./resources/circles0.svg" />
+          <img src="./resources/circles_left.svg" />
           <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
             <use href="#line"/>
           </svg>
@@ -112,7 +117,7 @@
           <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
             <use href="#line"/>
           </svg>
-          <img src="./resources/circles1.svg" />
+          <img src="./resources/circles_right.svg" />
         </div>
         <p id="locationsText"></p>
       </section>
@@ -126,7 +131,7 @@
           <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
             <use href="#line"/>
           </svg>
-          <img src="./resources/circles1.svg" />
+          <img src="./resources/circles_right.svg" />
         </div>
         <p id="dropsText"></p>
       </section>
