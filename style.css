@@ -145,7 +145,7 @@ section {
   left: 0;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 100vh;
   background: var(--background-color);
 
   padding: 8% 10%;
@@ -184,6 +184,30 @@ section {
     }
   }
 
+}
+
+button#closeDetailedInfo {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 3rem;
+  filter: drop-shadow(0 0 12px var(--primary-color-darker));
+  cursor: pointer;
+  scale: 1;
+  transition: all var(--soft-overshoot) 150ms;
+
+  path {
+    stroke-width: .1px;
+    stroke: var(--primary-color);
+  }
+}
+
+button#closeDetailedInfo:hover {
+  scale: 1.4;
+  filter: drop-shadow(0 0 8px var(--primary-color-brighter));
 }
 
 .detailed-entry {
@@ -248,8 +272,8 @@ section {
 /* } */
 
 .no-overflow {
-  max-height: 60vh;
-  overflow-y: clip;
+  display: none;
+  /* overflow-y: clip; */
 }
 
 .game-card {
@@ -454,6 +478,8 @@ section {
   .detailed-info-hidden {
     position: absolute;
     display: flex;
+    gap: 4rem;
+    min-height: 100vh;
     padding-top: 6rem;
     flex-direction: column;
     align-items: center;
@@ -490,7 +516,7 @@ section {
   }
 
   .entry {
-    width: auto;
+    width: 20rem;
     height: auto;
   }
 
@@ -596,8 +622,7 @@ section {
   }
 
   .detailed-entry {
-    width: 80% !important;
-    align-self: center;
+    width: 90% !important;
     height: auto;
   }
 

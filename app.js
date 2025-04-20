@@ -31,6 +31,7 @@ const contentDiv = document.getElementById("content")
 const resultsLoading = document.getElementById("resultsLoading")
 const categoryFilters = document.getElementById("categoryFilters").getElementsByTagName("input")
 
+const closeDetailedInfo = document.getElementById("closeDetailedInfo")
 const detailedInfoDiv = document.getElementById("detailedInfo")
 const detailedEntryImg = document.getElementById("detailedEntryImg")
 const detailedEntryId = document.getElementById("detaledEntryId")
@@ -40,9 +41,10 @@ const locationsText = document.getElementById("locationsText")
 const dropsText = document.getElementById("dropsText")
 
 const toggleDetails = async (entryName) => {
-  detailedInfoDiv.classList.toggle("detailed-info")
   contentDiv.classList.toggle("no-overflow")
+  detailedInfoDiv.classList.toggle("detailed-info")
 
+  if (!entryName) return
   const entry = await getEntry(entryName)
   detailedEntryImg.setAttribute("src", entry.image)
   detailedEntryId.innerText = entry.id.toString()
@@ -147,6 +149,10 @@ searchInput.oninput = debounce((e) => {
 Object.values(categoryFilters).forEach((el) => {
   el.onchange = () => filterAndShow()
 })
+
+closeDetailedInfo.onclick = (e) => {
+  toggleDetails()
+}
 
 detailedInfoDiv.onclick = (e) => {
   toggleDetails()
