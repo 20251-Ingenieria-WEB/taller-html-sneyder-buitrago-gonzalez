@@ -1,5 +1,7 @@
 # Hyrule Compendium Explorer
 
+![alt text](./screenshots/0.png)
+
 ## Descripción
 
 Hyrule Compendium Explorer es una página estática web para buscar y explorar entradas del compendio de *The Legend of Zelda: Breath of the Wild*. El **objetivo principal** de este proyecto fue profundizar un poco más en **JavaScript** y **CSS**. El **objetivo secundario** es servir como un **taller** para practicar el desarrollo web consumiendo una API externa.
