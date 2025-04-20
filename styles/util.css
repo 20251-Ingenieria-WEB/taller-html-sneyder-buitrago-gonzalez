@@ -3,4 +3,5 @@
   max-height: 50vh;
   overflow-y: clip;
   transition: none !important;
+  visibility: hidden;
 }

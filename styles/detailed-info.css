@@ -6,11 +6,10 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: calc(100% - 3vw);
   background: transparent;
 
   padding: 8% 10%;
-  margin-top: 3vw;
+  margin: 3vw 0;
   gap: 1rem 2rem;
   font-style: italic;
 
