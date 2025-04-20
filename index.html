@@ -15,6 +15,14 @@
       <path id="framePathArrows" d="M1 1 0 2V0H2L1 1M63 1 62 0H64V2L63 1M63 63 64 62V64H62L63 63M1 63 2 64H0V62L1 63" />
     </defs>
   </svg>
+  <svg style="display: none;">
+    <defs>
+      <path
+        style="fill:none;stroke:#88d2fa;stroke-width:1;stroke-linejoin:bevel;stroke-opacity:1;vector-effect:non-scaling-stroke"
+        d="M 0.00199094,3.1784264 6.3376438,3.1715736"
+        id="line" />
+    </defs>
+  </svg>
 </head>
 
 <body>
@@ -50,6 +58,66 @@
     <div id="content">
       <div id="resultsLoading">Loading...</div>
       <div class="search-results-page"></div>
+    </div>
+    <div id="detailedInfo" class="detailed-info-hidden">
+      <div class="entry detailed-entry">
+        <div class="name-cover">
+          <img id="detailedEntryImg"/>
+          <div class="info-outside">
+            <h2 id="detaledEntryId" class="id"></h2>
+            <span id="detailedEntryName" class="name"></span>
+          </div>
+        </div>
+        <svg viewBox="0 0 64 64" class="entry-frame">
+          <use href="#framePath" />
+          <use href="#framePathCorners" />
+        </svg>
+        <svg viewBox="0 0 64 64" class="entry-frame-arrows">
+          <use href="#framePathArrows" />
+        </svg>
+      </div>
+      <section class="description">
+        <div class="subtitle">
+          <img src="./resources/circles0.svg" />
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <h3>Description</h3>
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <img src="./resources/circles1.svg" />
+        </div>
+        <p id="descriptionText"></p>
+      </section>
+      <section class="locations">
+        <div class="subtitle">
+          <img src="./resources/circles0.svg" />
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <h3>Common Locations</h3>
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <img src="./resources/circles1.svg" />
+        </div>
+        <p id="locationsText"></p>
+      </section>
+      <section class="drops" style="display: none">
+        <div class="subtitle">
+          <img src="./resources/circles0.svg" />
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <h3>Drops</h3>
+          <svg viewBox="0 0 6.35 6.35" preserveAspectRatio="none">
+            <use href="#line"/>
+          </svg>
+          <img src="./resources/circles1.svg" />
+        </div>
+        <p id="dropsText"></p>
+      </section>
     </div>
   </main>
   <footer></footer>

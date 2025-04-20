@@ -31,6 +31,32 @@ const contentDiv = document.getElementById("content")
 const resultsLoading = document.getElementById("resultsLoading")
 const categoryFilters = document.getElementById("categoryFilters").getElementsByTagName("input")
 
+const detailedInfoDiv = document.getElementById("detailedInfo")
+const detailedEntryImg = document.getElementById("detailedEntryImg")
+const detailedEntryId = document.getElementById("detaledEntryId")
+const detailedEntryName = document.getElementById("detailedEntryName")
+const descriptionText = document.getElementById("descriptionText")
+const locationsText = document.getElementById("locationsText")
+const dropsText = document.getElementById("dropsText")
+
+const toggleDetails = async (entryName) => {
+  detailedInfoDiv.classList.toggle("detailed-info")
+  contentDiv.classList.toggle("no-overflow")
+
+  const entry = await getEntry(entryName)
+  detailedEntryImg.setAttribute("src", entry.image)
+  detailedEntryId.innerText = entry.id.toString()
+  detailedEntryName.innerText = entry.name
+  descriptionText.innerText = entry.description
+  locationsText.innerText = entry.common_locations.join("\n")
+  if ("drops" in entry) {
+    dropsText.parentElement.style.display = "block"
+    dropsText.innerText = entry.drops.join(", ")
+  } else {
+    dropsText.parentElement.style.display = "none"
+  }
+}
+
 /**@type (entryName: string) => Promise<Creature | Equipment | Material | Monster | Treasure>*/
 const getEntry = async (entryName) => {
 
@@ -69,9 +95,9 @@ const filterAndShow = async () => {
   contentDiv.appendChild(page)
 
   resultsLoading.style.display = "block"
-  let moreThanOneEntry = false
-  entriesFound
-    .forEach(async entry => {
+  let moreThanOneEntry = false;
+  const entriesAdded = entriesFound
+    .map(async entry => {
       const entryData = await getEntry(entry);
 
       if (!categoriesShown[entryData.category]) {
@@ -83,7 +109,16 @@ const filterAndShow = async () => {
       page.innerHTML += createEntryEl(entryData)
     });
 
+  await Promise.all(entriesAdded)
+
   if (moreThanOneEntry) {
+    const els = page.getElementsByClassName("entry")
+    Object.values(els).forEach(el => {
+      el.addEventListener("click", () => {
+        toggleDetails(el.getAttribute("name"))
+      })
+    })
+
   } else {
     resultsLoading.innerText = "No entries found"
   }
@@ -112,3 +147,14 @@ searchInput.oninput = debounce((e) => {
 Object.values(categoryFilters).forEach((el) => {
   el.onchange = () => filterAndShow()
 })
+
+detailedInfoDiv.onclick = (e) => {
+  toggleDetails()
+}
+
+Object.values(detailedInfoDiv.children).forEach(el => {
+  el.addEventListener("click", e => {
+    e.stopPropagation()
+  })
+})
+

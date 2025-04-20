@@ -8,6 +8,7 @@
   --primary-color: #88d2fa;
   --primary-color-darker: #0060ff;
   --secondary-color: #6c5f32;
+  --background-color: #171920;
 
   --soft-overshoot: linear(0, 0.402 7.4%, 0.711 15.3%, 0.929 23.7%, 1.008 28.2%, 1.067 33%, 1.099 36.9%, 1.12 41%, 1.13 45.4%, 1.13 50.1%, 1.111 58.5%, 1.019 83.2%, 1.004 91.3%, 1);
 }
@@ -16,7 +17,7 @@ body {
   font-family: "FOT-Rodin Pro DB";
 
   --lines-color: #1b4661;
-  background-color: #171920;
+  background-color: var(--background-color);
   /* background-size: 20px 20px; */
   /* background-image: repeating-linear-gradient(to right, var(--lines-color), var(--lines-color) 6px, #171920 1px, #171920); */
   color: var(--primary-color);
@@ -26,6 +27,20 @@ body {
 h1 {
   text-align: center;
   filter: drop-shadow(0 0 4px var(--primary-color-darker));
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 1rem;
+  text-wrap: nowrap;
+}
+
+section {
+  text-align: center;
+  width: 100%;
 }
 
 #searchForm {
@@ -83,6 +98,10 @@ h1 {
 
 }
 
+#resultsLoading {
+  display: none;
+}
+
 .search-input {
   background-color: transparent;
   color: var(--primary-color);
@@ -108,10 +127,6 @@ h1 {
   filter: brightness(1.0);
 }
 
-#resultsLoading {
-  display: none;
-}
-
 .search-results-page {
   display: grid;
   column-gap: 2rem;
@@ -120,6 +135,121 @@ h1 {
   width: fit-content;
   margin: auto;
   margin-top: 2rem;
+}
+
+.detailed-info-hidden {
+  position: fixed;
+  display: grid;
+  grid-template-rows: 1fr .5fr .5fr;
+  grid-template-columns: 40% 1fr;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  background: var(--background-color);
+
+  padding: 8% 10%;
+  gap: 1rem 2rem;
+  font-style: italic;
+
+  opacity: 0;
+  transition: opacity ease-out 100ms;
+  pointer-events: none;
+
+  p {
+    padding: .5rem;
+    text-align: justify;
+  }
+
+  .drops {
+    grid-column: 1 / 3;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .info-outside {
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    top: 0;
+    transform: translateY(-110%);
+    font-style: italic;
+    filter: drop-shadow(0 0 2px var(--primary-color-brighter));
+
+    .name {
+      font-size: 1.5rem;
+    }
+  }
+
+}
+
+.detailed-entry {
+
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1;
+  cursor: default !important;
+
+  align-self: auto;
+  justify-self: center;
+  grid-row: 1 / 3;
+
+  .name-cover img {
+    filter: brightness(100%);
+  }
+
+  .name {
+    opacity: 1;
+    transform: none;
+  }
+
+  .entry-frame {
+    filter: drop-shadow(0 0 8px var(--primary-color-brighter)) saturate(1.2);
+  }
+
+  .entry-frame-arrows {
+    display: block;
+    animation-play-state: paused !important;
+  }
+
+}
+
+.detailed-info {
+  opacity: 1;
+  pointer-events: all;
+
+  .detailed-entry .entry-frame-arrows {
+    animation-play-state: running !important;
+  }
+}
+
+.subtitle {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+
+  filter: brightness(1) drop-shadow(0 0 2px var(--primary-color-brighter));
+}
+
+.subtitle svg {
+  width: 100%;
+  /* Stretch to full width of flex container */
+  height: 24px;
+  /* Fixed height, adjust as needed */
+  display: block;
+  /* Remove extra spacing */
+}
+
+/* .growable { */
+/*   flex-grow: 0; */
+/* } */
+
+.no-overflow {
+  max-height: 60vh;
+  overflow-y: clip;
 }
 
 .game-card {
@@ -138,6 +268,7 @@ h1 {
 }
 
 .entry {
+  aspect-ratio: 1;
   position: relative;
 
   color: var(--primary-color);
@@ -166,12 +297,12 @@ h1 {
   }
 
   .entry-frame {
-    filter: drop-shadow(0 0 8px var(--primary-color-brighter)) saturate(1.2);
+    filter: drop-shadow(0 0 8px var(--primary-color-brighter)) saturate(1.1);
   }
 
   .entry-frame-arrows {
     display: block;
-    animation: 350ms cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite alternate scale-arrows;
+    animation-play-state: running;
   }
 }
 
@@ -182,8 +313,6 @@ h1 {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* border: 4px solid #284b60; */
-
 
   img {
     width: 95%;
@@ -230,10 +359,6 @@ h1 {
 
 }
 
-h2 {
-  margin: 0;
-}
-
 .entry-frame,
 .entry-frame-arrows {
   position: absolute;
@@ -242,7 +367,7 @@ h2 {
 }
 
 .entry-frame {
-  filter: saturate(.4) drop-shadow(0 0 6px var(--primary-color-brighter)) saturate(2) brightness(.7);
+  filter: saturate(.4) drop-shadow(0 0 6px var(--primary-color-brighter)) saturate(1.8) brightness(.7);
 }
 
 #framePath {
@@ -259,7 +384,8 @@ h2 {
 .entry-frame-arrows {
 
   display: none;
-  animation: none;
+  animation: 350ms cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite alternate scale-arrows;
+  animation-play-state: paused;
   stroke: var(--primary-color-brighter);
   fill: var(--primary-color-brighter);
   filter: drop-shadow(0 0 10px var(--primary-color)) brightness(1.1);
@@ -319,7 +445,23 @@ h2 {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 0px) {
+
+  body {
+    font-size: 20px;
+  }
+
+  .detailed-info-hidden {
+    position: absolute;
+    display: flex;
+    padding-top: 6rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detailed-entry {
+    width: 50% !important;
+  }
 
   .search-results-page {
     grid-template-columns: repeat(2, 1fr);
@@ -330,29 +472,26 @@ h2 {
     height: 4rem;
   }
 
-  .entry,
-  .entry-frame,
-  .entry-frame-arrows {
+  .entry {
     width: 12rem;
-    height: 12rem;
+    height: auto;
   }
+
 }
 
 @media (min-width: 768px) {
+
+  body {
+    font-size: 30px;
+  }
 
   .search-results-page {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  body {
-    font-size: 32px;
-  }
-
-  .entry,
-  .entry-frame,
-  .entry-frame-arrows {
-    width: 24rem;
-    height: 24rem;
+  .entry {
+    width: auto;
+    height: auto;
   }
 
   #searchForm {
@@ -403,11 +542,8 @@ h2 {
     gap: 3rem;
   }
 
-  .entry,
-  .entry-frame,
-  .entry-frame-arrows {
+  .entry {
     width: 16rem;
-    height: 16rem;
   }
 
   #categoryFilters {
@@ -431,9 +567,6 @@ h2 {
 }
 
 @media (min-width: 1200px) {
-  .search-results-page {
-    grid-template-columns: repeat(5, 1fr);
-  }
 
   body {
     font-size: 16px;
@@ -443,15 +576,29 @@ h2 {
     gap: 1rem;
   }
 
-  .info {
-    padding: 4px 12px;
+  .search-results-page {
+    grid-template-columns: repeat(5, 1fr);
   }
 
-  .entry,
-  .entry-frame,
-  .entry-frame-arrows {
+  .detailed-info-hidden {
+    display: grid;
+    height: 100vh;
+    align-items: start;
+  }
+
+  .info {
+    padding: 8px 12px;
+  }
+
+  .entry {
     width: 12rem;
     height: 12rem;
+  }
+
+  .detailed-entry {
+    width: 80% !important;
+    align-self: center;
+    height: auto;
   }
 
   .categoryIcon {
