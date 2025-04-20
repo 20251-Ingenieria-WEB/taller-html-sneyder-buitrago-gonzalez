@@ -31,7 +31,7 @@ const contentDiv = document.getElementById("content")
 const resultsLoading = document.getElementById("resultsLoading")
 const categoryFilters = document.getElementById("categoryFilters").getElementsByTagName("input")
 
-const closeDetailedInfo = document.getElementById("closeDetailedInfo")
+const closeDetailedInfoBtn = document.getElementById("closeDetailedInfo")
 const detailedInfoDiv = document.getElementById("detailedInfo")
 const detailedEntryImg = document.getElementById("detailedEntryImg")
 const detailedEntryId = document.getElementById("detaledEntryId")
@@ -41,7 +41,12 @@ const locationsText = document.getElementById("locationsText")
 const dropsText = document.getElementById("dropsText")
 
 const toggleDetails = async (entryName) => {
-  contentDiv.classList.toggle("no-overflow")
+
+  searchForm.classList.toggle("hidden")
+  contentDiv.classList.toggle("hidden")
+  // contentDiv.classList.toggle("hide-overflow")
+  // searchForm.classList.toggle("hide-overflow")
+  closeDetailedInfoBtn.classList.toggle("hidden")
   detailedInfoDiv.classList.toggle("detailed-info")
 
   if (!entryName) return
@@ -150,7 +155,7 @@ Object.values(categoryFilters).forEach((el) => {
   el.onchange = () => filterAndShow()
 })
 
-closeDetailedInfo.onclick = (e) => {
+closeDetailedInfoBtn.onclick = (e) => {
   toggleDetails()
 }
 

@@ -28,9 +28,21 @@
 <body>
   <header>
     <h1>Hyrule Compendium</h1>
+    <div class="frameart">
+      <img src="./resources/frameart_1.png"/>
+      <img src="./resources/frameart_2.png"/>
+      <button id="closeDetailedInfo" class="hidden">
+        <svg viewBox="0 0 1 1">
+          <path d="M 0 0 L 1 1 M 0 1 L 1 0"/>
+        </svg>
+        <span>
+          Close
+        </span>
+      </button>
+    </div>
   </header>
   <main>
-    <form id="searchForm">
+    <form id="searchForm" class="search-form main-content">
       <div id="categoryFilters">
         <label for="creaturesCheckbox">
           <input id="creaturesCheckbox" type="checkbox" value="creatures" checked />
@@ -55,16 +67,11 @@
       </div>
       <input id="searchInput" class="search-input" placeholder="Search" />
     </form>
-    <div id="content">
+    <div id="content" class="main-content">
       <div id="resultsLoading">Loading...</div>
       <div class="search-results-page"></div>
     </div>
     <div id="detailedInfo" class="detailed-info-hidden">
-      <button id="closeDetailedInfo">
-          <svg viewBox="0 0 1 1">
-            <path d="M 0 0 L 1 1 M 0 1 L 1 0"/>
-          </svg>
-      </button>
       <div class="entry detailed-entry">
         <div class="name-cover">
           <img id="detailedEntryImg"/>
