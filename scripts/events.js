@@ -1,7 +1,3 @@
-import { toggleDetails, getCategoryFilters, getDetailedInfoDiv } from "./ui.js";
-import { search, filterAndRender } from "./search.js";
-import { loadEntryNames, getEntry } from "./api.js";
-
 // Debounce utility
 const debounce = (fn, ms = 300) => {
   let timer;
@@ -12,7 +8,7 @@ const debounce = (fn, ms = 300) => {
 };
 
 // Bind event listeners
-export async function bindEvents() {
+async function bindEvents() {
   const entryNames = await loadEntryNames();
   const searchForm = document.getElementById("searchForm");
   const searchInput = document.getElementById("searchInput");

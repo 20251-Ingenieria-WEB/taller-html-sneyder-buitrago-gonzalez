@@ -1,8 +1,7 @@
-import { bindEvents } from "./events.js";
-
 // Initialize application
 async function init() {
+  initElements();
   await bindEvents();
 }
 
-init();
+window.onload = () => init();

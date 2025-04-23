@@ -1,11 +1,9 @@
-import { showSearchInfo, clearContent, createResultsPage, getCategoryFilters, createEntryEl } from "./ui.js";
-import { getEntry } from "./api.js";
 
 // Track search results
 let entriesFound = [];
 
 // Search entries
-export async function search(entryName, entryNames) {
+async function search(entryName, entryNames) {
   clearContent();
   if (entryName.length < 3) {
     // Enforce minimum input length for searches
@@ -21,7 +19,7 @@ export async function search(entryName, entryNames) {
 }
 
 // Filter and render entries by category
-export async function filterAndRender(entries) {
+async function filterAndRender(entries) {
   // Collect checked category filters, ensuring only valid categories
   const categoriesShown = Array.from(getCategoryFilters()).reduce(
     (prev, el) => {

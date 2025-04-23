@@ -1,22 +1,26 @@
 // DOM elements
-const elements = {
-  searchInput: document.getElementById("searchInput"),
-  searchForm: document.getElementById("searchForm"),
-  searchInfo: document.getElementById("searchInfo"),
-  contentDiv: document.getElementById("content"),
-  categoryFilters: document.getElementById("categoryFilters").getElementsByTagName("input"),
-  closeDetailedInfoBtn: document.getElementById("closeDetailedInfo"),
-  detailedInfoDiv: document.getElementById("detailedInfo"),
-  detailedEntryImg: document.getElementById("detailedEntryImg"),
-  detailedEntryId: document.getElementById("detaledEntryId"),
-  detailedEntryName: document.getElementById("detailedEntryName"),
-  descriptionText: document.getElementById("descriptionText"),
-  locationsText: document.getElementById("locationsText"),
-  dropsText: document.getElementById("dropsText"),
-};
+let elements = {};
+
+function initElements() {
+  elements = {
+    searchInput: document.getElementById("searchInput"),
+    searchForm: document.getElementById("searchForm"),
+    searchInfo: document.getElementById("searchInfo"),
+    contentDiv: document.getElementById("content"),
+    categoryFilters: document.getElementById("categoryFilters").getElementsByTagName("input"),
+    closeDetailedInfoBtn: document.getElementById("closeDetailedInfo"),
+    detailedInfoDiv: document.getElementById("detailedInfo"),
+    detailedEntryImg: document.getElementById("detailedEntryImg"),
+    detailedEntryId: document.getElementById("detaledEntryId"),
+    detailedEntryName: document.getElementById("detailedEntryName"),
+    descriptionText: document.getElementById("descriptionText"),
+    locationsText: document.getElementById("locationsText"),
+    dropsText: document.getElementById("dropsText"),
+  };
+}
 
 // Toggle detailed info view
-export async function toggleDetails(entryName, getEntry) {
+async function toggleDetails(entryName, getEntry) {
   // Toggle visibility of search form, content, and detailed info
   elements.searchForm.classList.toggle("hidden");
   elements.contentDiv.classList.toggle("hidden");
@@ -48,29 +52,29 @@ export async function toggleDetails(entryName, getEntry) {
 }
 
 // Show or hide search info message
-export function showSearchInfo(message, isVisible = true) {
+function showSearchInfo(message, isVisible = true) {
   elements.searchInfo.innerText = message;
   elements.searchInfo.style.display = isVisible ? "block" : "none";
 }
 
 // Clear content area
-export function clearContent() {
+function clearContent() {
   elements.contentDiv.innerHTML = "";
 }
 
 // Create container for search results
-export function createResultsPage() {
+function createResultsPage() {
   const page = document.createElement("div");
   page.className = "search-results-page";
   elements.contentDiv.appendChild(page);
   return page;
 }
 
-export function getCategoryFilters() {
+function getCategoryFilters() {
   return elements.categoryFilters;
 }
 
-export function getDetailedInfoDiv() {
+function getDetailedInfoDiv() {
   return elements.detailedInfoDiv;
 }
 
@@ -83,7 +87,7 @@ const CATEGORIES = [
 ];
 
 // Create HTML element for an entry
-export const createEntryEl = (entry) => {
+const createEntryEl = (entry) => {
   if (!entry) {
     console.error("No entry provided");
     return "";

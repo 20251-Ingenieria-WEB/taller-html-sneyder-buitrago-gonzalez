@@ -17,11 +17,13 @@
 body {
   font-family: "FOT-Rodin Pro DB";
 
+  box-sizing: border-box;
   background-color: var(--background-color);
   background-size: 1.6em 100%;
   background-image: repeating-linear-gradient(to right, var(--lines-color) 0, transparent 10%, transparent 90%, var(--lines-color));
   color: var(--primary-color);
   padding: 4vw 1rem 6rem 1rem;
+  min-height: 100vh;
 }
 
 h1 {

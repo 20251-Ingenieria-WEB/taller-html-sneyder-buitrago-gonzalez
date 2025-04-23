@@ -1,4 +1,4 @@
-[
+const entries = [
   "ancient arrow",
   "ancient battle axe",
   "ancient battle axe+",
