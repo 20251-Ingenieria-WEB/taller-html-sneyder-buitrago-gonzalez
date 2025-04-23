@@ -32,6 +32,9 @@ Hyrule Compendium Explorer es una página estática web para buscar y explorar e
    ```
 2. Abre `http://localhost:8000`.
 
+### 3. Otra alternativa es simplemente visitar el sitio:
+[https://20251-ingenieria-web.github.io/taller-html-sneyder-buitrago-gonzalez/](https://20251-ingenieria-web.github.io/taller-html-sneyder-buitrago-gonzalez/)
+
 ## Uso
 
 - **Filtrar**: Selecciona categorías (criaturas, monstruos, etc.) con las casillas.
